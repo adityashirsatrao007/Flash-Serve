@@ -75,29 +75,36 @@ def draw_architecture():
         if label:
             ax.text((x1+x2)/2, (y1+y2)/2, label, ha='center', va='center', backgroundcolor='white', fontsize=8)
 
+    # Settings
+    ax.set_xlim(0, 10)
+    ax.set_ylim(0, 10)
+    ax.axis('off')
+    
     # Boxes
-    draw_box(4, 9, 2, 1, "User Request", color='#f0fdf4', edge='#16a34a')
-    draw_box(4, 7, 2, 1, "API Server\n(FastAPI)", color='#fff7ed', edge='#ea580c')
+    draw_box(4, 8.5, 2, 1, "User Request", color='#f0fdf4', edge='#16a34a')
+    draw_box(4, 6.5, 2, 1, "API Server\n(FastAPI)", color='#fff7ed', edge='#ea580c')
     
     # Engine Box (Container)
-    rect = patches.FancyBboxPatch((1, 1), 8, 5, boxstyle="round,pad=0.2", linewidth=2, edgecolor='#9333ea', facecolor='#faf5ff', alpha=0.5)
+    # Using simple Rectangle to avoid bounds issues with FancyBboxPatch
+    rect = patches.Rectangle((1, 1), 8, 4.5, linewidth=2, edgecolor='#9333ea', facecolor='#faf5ff', alpha=0.5)
     ax.add_patch(rect)
-    ax.text(5, 6.2, "Inference Engine", ha='center', fontweight='bold', color='#9333ea')
+    ax.text(5, 5.8, "Inference Engine", ha='center', fontweight='bold', color='#9333ea')
     
-    draw_box(4, 4.5, 2, 0.8, "Scheduler", color='#eff6ff', edge='#2563eb')
-    draw_box(2, 2.5, 2, 1, "Model Executor\n(GPU)", color='#fee2e2', edge='#dc2626')
-    draw_box(6, 2.5, 2, 1, "Block Manager\n(PagedAttention)", color='#f0f9ff', edge='#0ea5e9')
+    draw_box(4, 4, 2, 0.8, "Scheduler", color='#eff6ff', edge='#2563eb')
+    draw_box(2, 2, 2, 1, "Model Executor\n(GPU)", color='#fee2e2', edge='#dc2626')
+    draw_box(6, 2, 2, 1, "Block Manager\n(PagedAttention)", color='#f0f9ff', edge='#0ea5e9')
 
     # Arrows
-    draw_arrow(5, 9, 5, 8.1)
-    draw_arrow(5, 7, 5, 5.4, "Prompt")
-    draw_arrow(4, 4.9, 3, 3.6, "Batch")
-    draw_arrow(6, 4.9, 7, 3.6, "Alloc/Free")
-    draw_arrow(4, 2.8, 5.9, 2.8) # Model -> Memory
-    ax.text(5, 3, "KV Cache", ha='center', fontsize=8)
+    draw_arrow(5, 8.5, 5, 7.6) # User -> API
+    draw_arrow(5, 6.5, 5, 4.9, "Prompt") # API -> Scheduler
+    draw_arrow(4, 4.4, 3, 3.1, "Batch") # Scheduler -> Model
+    draw_arrow(6, 4.4, 7, 3.1, "Alloc/Free") # Scheduler -> BlockMgr
+    draw_arrow(4, 2.5, 5.9, 2.5) # Model -> Memory
+    ax.text(5, 2.7, "KV Cache", ha='center', fontsize=8)
 
-    plt.tight_layout()
-    plt.savefig('architecture_diagram.png', dpi=300)
+    # Save with full figure and explicit white background
+    fig.patch.set_facecolor('white')
+    plt.savefig('architecture_diagram_v2.png', dpi=300)
     plt.close()
 
 if __name__ == "__main__":
