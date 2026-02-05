@@ -10,7 +10,7 @@
 
 ## 🏗️ System Architecture
 
-![Architecture Diagram](architecture_diagram_v4.png)
+![Architecture Diagram](assets/architecture_diagram.png)
 
 *The diagram above illustrates how User Requests flow through the API, are dynamically scheduled via Continuous Batching, and processed using PagedAttention memory management.*
 
@@ -31,12 +31,12 @@ Most student projects use standard `model.generate()`, which suffers from **Stat
 ### ❌ Standard Approach (Static Batching)
 
 *Result: 50% GPU Wastage*
-![Naive Batching](naive_batching.png)
+![Naive Batching](assets/naive_batching.png)
 
 ### ✅ Flash-Serve Approach (Continuous Batching)
 
 *Result: 100% GPU Utilization*
-![Flash-Serve Batching](flash_serve_batching.png)
+![Flash-Serve Batching](assets/flash_serve_batching.png)
 
 ---
 
