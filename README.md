@@ -28,31 +28,13 @@ Most student projects use standard `model.generate()`, which suffers from **Stat
 
 ### ❌ Standard Approach (Static Batching)
 *Result: 50% GPU Wastage*
-```mermaid
-gantt
-    title Naive Inference (Inefficient)
-    dateFormat s
-    axisFormat %s
-    
-    section Batch 1
-    User A (Long Request)   :active, a1, 0, 10s
-    User B (Short Request)  :b1, 0, 4s
-    GPU IDLE (WASTE)        :crit, 4, 10s
-```
+### ❌ Standard Approach (Static Batching)
+*Result: 50% GPU Wastage*
+![Naive Batching](naive_batching.png)
 
 ### ✅ Flash-Serve Approach (Continuous Batching)
 *Result: 100% GPU Utilization*
-```mermaid
-gantt
-    title Flash-Serve (Optimized)
-    dateFormat s
-    axisFormat %s
-    
-    section Execution
-    User A (Long Request)   :active, a1, 0, 10s
-    User B (Short Request)  :b1, 0, 4s
-    User C (Injected!)      :c1, 4, 10s
-```
+![Flash-Serve Batching](flash_serve_batching.png)
 
 ---
 
