@@ -103,6 +103,24 @@ For detailed engineering specs, see the `docs/` directory:
 
 ---
 
+## ☁️ Deployment
+
+### Option 1: Google Colab (Free GPU)
+
+You can run the benchmark and engine directly in your browser:
+[Open Demo Notebook](demo.ipynb)
+
+### Option 2: Docker / Hugging Face Spaces
+
+This project includes a `Dockerfile` for easy deployment.
+
+1. **Build**: `docker build -t flash-serve .`
+2. **Run**: `docker run -p 7860:7860 flash-serve`
+
+*The container runs both the API (port 8000) and the UI (port 7860).*
+
+---
+
 ## 👤 Author
 
 **Aditya Vishal Shirsatrao**
