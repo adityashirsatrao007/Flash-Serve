@@ -10,7 +10,7 @@
 
 ## 🏗️ System Architecture
 
-![Architecture Diagram](architecture_diagram_v2.png)
+![Architecture Diagram](architecture_diagram_v3.png)
 
 *The diagram above illustrates how User Requests flow through the API, are dynamically scheduled via Continuous Batching, and processed using PagedAttention memory management.*
 
