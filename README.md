@@ -2,7 +2,7 @@
 title: Flash Serve Demo
 emoji: ⚡
 colorFrom: yellow
-colorTo: orange
+colorTo: red
 sdk: docker
 pinned: false
 license: mit
