@@ -27,10 +27,6 @@ Standard inference pipelines (like `model.generate()`) suffer from **Head-of-Lin
 ### ❌ Standard Approach (Static Batching)
 
 *Result: 50% GPU Wastage*
-
-### ❌ Standard Approach (Static Batching)
-
-*Result: 50% GPU Wastage*
 ![Naive Batching](assets/naive_batching.png)
 
 ### ✅ Flash-Serve Approach (Continuous Batching)
