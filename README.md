@@ -1,3 +1,13 @@
+---
+title: Flash Serve Demo
+emoji: ⚡
+colorFrom: yellow
+colorTo: orange
+sdk: docker
+pinned: false
+license: mit
+---
+
 # Flash-Serve: High-Throughput Inference Engine
 
 ![License](https://img.shields.io/badge/license-MIT-green)
