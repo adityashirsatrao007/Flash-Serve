@@ -4,9 +4,9 @@
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue)
 ![Status](https://img.shields.io/badge/status-active-success)
 
-**Mini-vLLM** is a high-performance LLM inference engine built from scratch to demonstrate advanced systems engineering concepts. It implements **Continuous Batching** and **PagedAttention** to achieve massive throughput gains over naive inference pipelines.
+**Flash-Serve** is a high-throughput LLM inference engine optimized for GPU utilization. It implements **Continuous Batching** and **PagedAttention** to eliminate memory fragmentation and scheduling bubbles, significantly outperforming naive generation pipelines.
 
-**Flash-Serve** is a high-performance LLM inference engine built from scratch.
+Designed for low-latency, high-concurrency environments, Flash-Serve manages KV cache efficiently to handle 2x more requests per second than standard HuggingFace baselines.
 
 ## 🏗️ System Architecture
 
@@ -20,9 +20,9 @@
 
 ## ⚡ Why Flash-Serve? (The Unique Advantage)
 
-Most student projects use standard `model.generate()`, which suffers from **Static Batching**. If one request is short and another is long, the GPU sits idle waiting for the long one to finish.
+Standard inference pipelines (like `model.generate()`) suffer from **Head-of-Line Blocking** due to Static Batching. If a batch contains one long sequence, the GPU sits idle while waiting for it to finish, wasting up to 50% of compute cycles.
 
-**Flash-Serve** is unique because it implements **Continuous Batching**, filling those idle gaps instantly.
+**Flash-Serve** solves this with **Continuous Batching** (Cellular Batching), dynamically injecting new requests into the running batch as soon as others finish.
 
 ### ❌ Standard Approach (Static Batching)
 
@@ -88,7 +88,7 @@ streamlit run chat_ui.py
 
 ## 📊 Performance
 
-Mini-vLLM achieves **2x throughput** compared to vanilla HuggingFace pipelines on consumer hardware by eliminating memory fragmentation and scheduling bubbles.
+Flash-Serve achieves **2x throughput** compared to vanilla HuggingFace pipelines on consumer hardware. By using PagedAttention, it reduces KV cache memory waste from internal fragmentation to near zero.
 
 Run the benchmark yourself:
 
@@ -118,5 +118,3 @@ For detailed engineering specs, see the `docs/` directory:
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-*Built for the Advanced AI Engineering Portfolio.*
