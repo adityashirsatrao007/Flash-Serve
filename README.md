@@ -24,9 +24,14 @@ Designed for low-latency, high-concurrency environments, Flash-Serve manages KV 
 
 *The diagram above illustrates how User Requests flow through the API, are dynamically scheduled via Continuous Batching, and processed using PagedAttention memory management.*
 
-## 🎥 Live Demo
+## 🚀 Live Demo
 
-> **Note:** A recording of the project running in the browser is available at `videos/demo.webm`.
+**Try the project live on Hugging Face Spaces:**
+👉 **[Flash-Serve Demo](https://huggingface.co/spaces/adityashirsatrao007/Flash-Serve-Demo)**
+
+### 🎥 Video Demo
+
+[Watch the full recording](videos/demo.webm)
 
 ## ⚡ Why Flash-Serve? (The Unique Advantage)
 
